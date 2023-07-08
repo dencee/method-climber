@@ -209,7 +209,7 @@ let sketch = function (p) {
     }
 
     p.preload = function() {
-        potatoImg = p.loadImage('assets/images/potatoes.png');
+        potatoImg = p.loadImage('assets/images/polly-programmer.png');
         mountainImg = p.loadImage('assets/images/mountain.png');
     }
 
