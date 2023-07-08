@@ -188,7 +188,7 @@ let sketch = function (p) {
     let stepYPerCorrectAnswer;
     let climberRotateAmt = 0;
     let winningStreak = 0;
-    let numAnswersToWin = 10;
+    let numAnswersToWin = 2;
 
     /*
      * Note: Resizing the background lead to quality loss,
@@ -216,6 +216,7 @@ let sketch = function (p) {
     p.setup = function() {
         p5Canvas = p.createCanvas(canvasDiv.offsetWidth, canvasDiv.offsetHeight);
         p5Canvas.id('potato')
+        potatoImg.resize(150, 150);
 
         stepYPerCorrectAnwser = p5Canvas.height / numAnswersToWin;
 
@@ -241,11 +242,6 @@ let sketch = function (p) {
         p.fill("#FFA500");
         p.text("streak: " + winningStreak, 10, 30);
 
-        if(winningStreak >= numAnswersToWin){
-            alert("You have summited the Mountain of Methods!");
-            winningStreak = 0;
-        }
-
         if(isCorrect === true){
             winningStreak += 1;
             targetClimbY = climbY - stepYPerCorrectAnwser;
@@ -254,6 +250,19 @@ let sketch = function (p) {
             winningStreak = 0;
             targetClimbY = startClimbY;
             isWrong = false;
+        }
+
+        if( climbY <= -potatoImg.height ){
+            // Climbed to the top!
+
+            if(winningStreak >= numAnswersToWin){
+                alert("You have summited the Mountain of Methods!");
+                winningStreak = 0;
+            }
+
+            if(p.mouseIsPressed){
+                p.image(potatoImg, p.mouseX - (potatoImg.width/2), p.mouseY - (potatoImg.height/2));
+            }
         }
 
         if(targetClimbY == climbY) {
