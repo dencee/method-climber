@@ -188,7 +188,7 @@ let sketch = function (p) {
     let stepYPerCorrectAnswer;
     let climberRotateAmt = 0;
     let winningStreak = 0;
-    let numAnswersToWin = 2;
+    let numAnswersToWin = 10;
 
     /*
      * Note: Resizing the background lead to quality loss,
